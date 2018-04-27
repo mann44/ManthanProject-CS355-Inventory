@@ -2,16 +2,15 @@
 
 <div class="page-data">
     <div class="data-btn">
-        <button onClick="addVendors()">+ Add</button>
+        <button onClick="addRatelist()">+ Add</button>
     </div>
     <div class="data-table">
         <table border="1" cellpadding="7" cellspacing="7">
             <tr>
                 <th width="50px">No</th>
+                <th>List Id</th>
+                <th>Product ID</th>
                 <th>Vendor Id</th>
-                <th>Vendor's Name</th>
-                <th>Vendor's Address</th>
-                <th>Vendor's Phone</th>
                 <th width="120px">Action</th>
             </tr>
 
@@ -21,10 +20,9 @@
 
             <tr>
                 <td><%=(i+1)%></td>
+                <td><%=data[i].list_id%></td>
+                <td><%=data[i].product_id%></td>
                 <td><%=data[i].vendor_id%></td>
-                <td><%=data[i].vendor_name%></td>
-                <td><%=data[i].vendor_address%></td>
-                <td><%=data[i].vendor_phone%></td>
                 <td>
                     <a class="a-inside edit" href="../vendors/edit/<%=data[i].id%>">Edit</a>
 
@@ -36,7 +34,7 @@
 
             }else{ %>
             <tr>
-                <td colspan="3">No vendors</td>
+                <td colspan="3">No ratelist</td>
             </tr>
             <% } %>
 

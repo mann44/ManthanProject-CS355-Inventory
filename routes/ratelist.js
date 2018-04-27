@@ -7,13 +7,13 @@ exports.list = function(req, res){
 
     req.getConnection(function(err,connection){
 
-        var query = connection.query('SELECT * FROM vendors',function(err,rows)
+        var query = connection.query('SELECT * FROM ratelist',function(err,rows)
         {
 
             if(err)
                 console.log("Error Selecting : %s ",err );
 
-            res.render('vendors',{page_title:"vendors",data:rows});
+            res.render('ratelist',{page_title:"ratelist",data:rows});
 
 
         });
@@ -24,22 +24,22 @@ exports.list = function(req, res){
 };
 
 exports.add = function(req, res){
-    res.render('add_vendors',{page_title:"Add vendors "});
+    res.render('add_ratelist',{page_title:"Add ratelist "});
 };
 
 exports.edit = function(req, res){
 
-    var vendor_id = req.params.vendor_id;
+    var list_id = req.params.list_id;
 
     req.getConnection(function(err,connection){
 
-        var query = connection.query('SELECT * FROM vendors WHERE purchase_id = ?',[vendor_id],function(err,rows)
+        var query = connection.query('SELECT * FROM ratelist WHERE list_id = ?',[list_id],function(err,rows)
         {
 
             if(err)
                 console.log("Error Selecting : %s ",err );
 
-            res.render('edit_vendors',{page_title:"Edit vendors ",data:rows});
+            res.render('edit_ratelist',{page_title:"Edit ratelist ",data:rows});
 
 
         });
@@ -58,19 +58,19 @@ exports.save = function(req,res){
         var data = {
 
             <!--vendor_id: input.vendor_id,-->
-            vendor_name  : input.vendor_name,
-            vendor_address : input.vendor_address,
-            vendor_phone : input.vendor_phone
+            list_id  : input.list_id,
+            product_id : input.product_id,
+            vendor_id : input.vendor_id
 
         };
 
-        var query = connection.query("INSERT INTO vendors set ? ",data, function(err, rows)
+        var query = connection.query("INSERT INTO ratelist set ? ",data, function(err, rows)
         {
 
             if (err)
                 console.log("Error inserting : %s ",err );
 
-            res.redirect('/vendors');
+            res.redirect('/ratelist');
 
         });
 

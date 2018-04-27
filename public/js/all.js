@@ -31,3 +31,11 @@ function cancelVendors(){
 
     window.location.href = '/vendors';
 }
+function addRatelist(){
+
+    window.location.href = '/ratelist/add';
+}
+function cancelRatelist(){
+
+    window.location.href = '/ratelist';
+}

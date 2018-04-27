@@ -13,6 +13,7 @@ var mysql = require('mysql');
 var products = require("./routes/products");
 var purchases = require("./routes/purchases");
 var vendors = require("./routes/vendors");
+var ratelist = require("./routes/ratelist");
 // all environments
 app.set('port', process.env.PORT || 4300);
 app.set('views', path.join(__dirname, 'views'));
@@ -74,6 +75,12 @@ app.get('/vendors/delete/:vendor_id', vendors.delete_customer);//edit customer r
 app.get('/vendors/edit/:vendor_id', vendors.edit);
 app.post('/vendors/edit/:vendor_id',vendors.save_edit);
 
+app.get('/ratelist', ratelist.list);//route add customer, get n post
+app.get('/ratelist/add', ratelist.add);
+app.post('/ratelist/add', ratelist.save);//route delete customer
+app.get('/ratelist/delete/:list_id', ratelist.delete_customer);//edit customer route , get n post
+app.get('/ratelist/edit/:list_id', ratelist.edit);
+app.post('/ratelist/edit/:list_id',ratelist.save_edit);
 app.use(app.router);
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
