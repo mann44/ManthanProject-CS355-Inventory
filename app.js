@@ -55,9 +55,9 @@ app.post('/customers/edit/:id',customers.save_edit);
 app.get('/products', products.list);//route add customer, get n post-->
 app.get('/products/add', products.add);
 app.post('/products/add', products.save);//route delete customer
-app.get('/products/delete/:products_id', products.delete_customer);//edit customer route , get n post
-app.get('/products/edit/:products_id', products.edit);
-app.post('/products/edit/:products_id',products.save_edit);
+app.get('/products/delete/:product_id', products.delete_customer);//edit customer route , get n post
+app.get('/products/edit/:product_id', products.edit);
+app.post('/products/edit/:product_id',products.save_edit);
 
 
 app.get('/purchases', purchases.list);//route add customer, get n post

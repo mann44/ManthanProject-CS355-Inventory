@@ -7,7 +7,7 @@ exports.list = function(req, res){
 
     req.getConnection(function(err,connection){
 
-        var query = connection.query('SELECT * FROM purchases',function(err,rows)
+        var query = connection.query('SELECT * FROM purchase_view',function(err,rows)
         {
 
             if(err)
@@ -33,7 +33,7 @@ exports.edit = function(req, res){
 
     req.getConnection(function(err,connection){
 
-        var query = connection.query('SELECT * FROM purchases WHERE purchase_id = ?',[purchases_id],function(err,rows)
+        var query = connection.query('customer_purchase(?);',[purchases_id],function(err,rows)
         {
 
             if(err)
@@ -59,7 +59,7 @@ exports.save = function(req,res){
 
             id: input.id,
             product_id : input.product_id,
-            purchase_date  : input.date
+            purchase_date  : input.purchase_date
 
         };
 
