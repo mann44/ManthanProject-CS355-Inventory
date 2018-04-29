@@ -63,9 +63,9 @@ app.post('/products/edit/:product_id',products.save_edit);
 app.get('/purchases', purchases.list);//route add customer, get n post
 app.get('/purchases/add', purchases.add);
 app.post('/purchases/add', purchases.save);//route delete customer
-app.get('/purchases/delete/:purchases_id', purchases.delete_customer);//edit customer route , get n post
-app.get('/purchases/edit/:purchases_id', purchases.edit);
-app.post('/purchases/edit/:purchases_id',purchases.save_edit);
+app.get('/purchases/delete/:purchase_id', purchases.delete_customer);//edit customer route , get n post
+app.get('/purchases/edit/:purchase_id', purchases.edit);
+app.post('/purchases/edit/:purchase_id',purchases.save_edit);
 
 //route add customer, get n post
 app.get('/vendors', vendors.list);

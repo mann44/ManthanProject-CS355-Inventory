@@ -1,0 +1,28 @@
+<%- include layouts/header.ejs %>
+
+<div class="page-data">
+
+    <form method="post" action="<%=data[0].vendor_id%>">
+        <table cellpadding="11">
+            <tr>
+                <td class="label">Vendor's Name</td><td>: <input type="text" name="vendor_name" value="<%=data[0].vendor_name%>" required></td>
+            </tr>
+            <tr>
+                <td class="label">Vendor's Address</td><td>: <input type="text" name="vendor_address" value="<%=data[0].vendor_address%>" required></td>
+            </tr>
+            <tr>
+                <td class="label">Vendor's Phone</td><td>: <input type="text" name="vendor_phone" value="<%=data[0].vendor_phone%>" required></td>
+            </tr>
+            <tr>
+                <td class="label"></td>
+                <td>
+                    &nbsp; <input type="submit" name="submit" value="Save">
+                    <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelVendors()">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+<!--<%- include layouts/footer.ejs %>-->

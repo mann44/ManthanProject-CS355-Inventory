@@ -28,17 +28,15 @@ exports.add = function(req, res){
 };
 
 exports.edit = function(req, res){
-
     var purchase_id = req.params.purchase_id;
-
+console.log("==========purchase_id value is =============", purchase_id)
     req.getConnection(function(err,connection){
 
-        var query = connection.query('customer_purchase(?);',[purchases_id],function(err,rows)
+        var query = connection.query('select * from purchases where purchase_id = ?;',[purchase_id],function(err,rows)
         {
 
             if(err)
                 console.log("Error Selecting : %s ",err );
-
             res.render('edit_purchases',{page_title:"Edit Purchases ",data:rows});
 
 
@@ -81,7 +79,7 @@ exports.save = function(req,res){
 exports.save_edit = function(req,res){
 
     var input = JSON.parse(JSON.stringify(req.body));
-    var purchases_id = req.params.purchases_id;
+    var purchase_id = req.params.purchase_id;
 
     req.getConnection(function (err, connection) {
 
@@ -92,7 +90,7 @@ exports.save_edit = function(req,res){
             purchase_date  : input.purchase_date
         };
 
-        connection.query("UPDATE purchases set ? WHERE purchases_id = ? ",[data,purchases_id], function(err, rows)
+        connection.query("UPDATE purchases set ? WHERE purchase_id = ? ",[data,purchase_id], function(err, rows)
         {
 
             if (err)
@@ -108,11 +106,11 @@ exports.save_edit = function(req,res){
 
 exports.delete_customer = function(req,res){
 
-    var purchases_id = req.params.purchase_id;
+    var purchase_id = req.params.purchase_id;
 
     req.getConnection(function (err, connection) {
 
-        connection.query("DELETE FROM purchases  WHERE purchase_id = ? ",[purchases_id], function(err, rows)
+        connection.query("DELETE FROM purchases  WHERE purchase_id = ? ",[purchase_id], function(err, rows)
         {
 
             if(err)

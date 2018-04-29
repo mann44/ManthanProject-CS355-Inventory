@@ -15,7 +15,6 @@ exports.list = function(req, res){
 
             res.render('vendors',{page_title:"vendors",data:rows});
 
-
         });
 
         //console.log(query.sql);
@@ -30,17 +29,18 @@ exports.add = function(req, res){
 exports.edit = function(req, res){
 
     var vendor_id = req.params.vendor_id;
+    console.log('=============INPUT VALUE===========', JSON.stringify(req.params));
 
     req.getConnection(function(err,connection){
 
-        var query = connection.query('SELECT * FROM vendors WHERE purchase_id = ?',[vendor_id],function(err,rows)
+        var query = connection.query('SELECT * FROM vendors WHERE vendor_id = ?',[vendor_id],function(err,rows)
         {
 
             if(err)
                 console.log("Error Selecting : %s ",err );
 
+            console.log('=============TABLE DATA===========', JSON.stringify(rows));
             res.render('edit_vendors',{page_title:"Edit vendors ",data:rows});
-
 
         });
 
@@ -82,25 +82,26 @@ exports.save = function(req,res){
 exports.save_edit = function(req,res){
 
     var input = JSON.parse(JSON.stringify(req.body));
-    var purchases_id = req.params.purchases_id;
+    var vendor_id = req.params.vendor_id;
 
     req.getConnection(function (err, connection) {
 
         var data = {
 
-            id: input.id,
-            product_id : input.product_id,
-            purchase_date  : input.date
+            vendor_name  : input.vendor_name,
+            vendor_address : input.vendor_address,
+            vendor_phone : input.vendor_phone
+
 
         };
 
-        connection.query("UPDATE purchases set ? WHERE purchases_id = ? ",[data,purchases_id], function(err, rows)
+        connection.query("UPDATE vendors set ? WHERE vendor_id = ? ",[data,vendor_id], function(err, rows)
         {
 
             if (err)
                 console.log("Error Updating : %s ",err );
 
-            res.redirect('/purchases');
+            res.redirect('/vendors');
 
         });
 
@@ -110,17 +111,17 @@ exports.save_edit = function(req,res){
 
 exports.delete_customer = function(req,res){
 
-    var purchases_id = req.params.purchase_id;
+    var vendor_id = req.params.vendor_id;
 
     req.getConnection(function (err, connection) {
 
-        connection.query("DELETE FROM purchases  WHERE purchase_id = ? ",[purchases_idid], function(err, rows)
+        connection.query("DELETE FROM vendors  WHERE vendor_id = ? ",[vendor_id], function(err, rows)
         {
 
             if(err)
                 console.log("Error deleting : %s ",err );
 
-            res.redirect('/purchases');
+            res.redirect('/vendors');
 
         });
 

@@ -58,13 +58,12 @@ exports.save = function(req,res){
         var data = {
 
             <!--vendor_id: input.vendor_id,-->
-            list_id  : input.list_id,
             product_id : input.product_id,
             vendor_id : input.vendor_id
 
         };
 
-        var query = connection.query("INSERT INTO ratelist set ? ",data, function(err, rows)
+        var query = connection.query("INSERT INTO ratelist set ? ",[data], function(err, rows)
         {
 
             if (err)
@@ -82,25 +81,24 @@ exports.save = function(req,res){
 exports.save_edit = function(req,res){
 
     var input = JSON.parse(JSON.stringify(req.body));
-    var purchases_id = req.params.purchases_id;
+    var list_id = req.params.list_id;
 
     req.getConnection(function (err, connection) {
 
         var data = {
 
-            id: input.id,
             product_id : input.product_id,
-            purchase_date  : input.date
+            vendor_id : input.vendor_id
 
         };
 
-        connection.query("UPDATE purchases set ? WHERE purchases_id = ? ",[data,purchases_id], function(err, rows)
+        connection.query("UPDATE ratelist set ? WHERE list_id = ? ",[data,list_id], function(err, rows)
         {
 
             if (err)
                 console.log("Error Updating : %s ",err );
 
-            res.redirect('/purchases');
+            res.redirect('/ratelist');
 
         });
 
@@ -110,17 +108,17 @@ exports.save_edit = function(req,res){
 
 exports.delete_customer = function(req,res){
 
-    var purchases_id = req.params.purchase_id;
+    var list_id = req.params.list_id;
 
     req.getConnection(function (err, connection) {
 
-        connection.query("DELETE FROM purchases  WHERE purchase_id = ? ",[purchases_idid], function(err, rows)
+        connection.query("DELETE FROM ratelist  WHERE list_id = ? ",[list_id], function(err, rows)
         {
 
             if(err)
                 console.log("Error deleting : %s ",err );
 
-            res.redirect('/purchases');
+            res.redirect('/ratelist');
 
         });
 
