@@ -14,6 +14,8 @@ var products = require("./routes/products");
 var purchases = require("./routes/purchases");
 var vendors = require("./routes/vendors");
 var ratelist = require("./routes/ratelist");
+var q_subquery = require("./routes/query");
+
 // all environments
 app.set('port', process.env.PORT || 4300);
 app.set('views', path.join(__dirname, 'views'));
@@ -28,10 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
-/*------------------------------------------
-    connection peer, register as middleware
-    type koneksi : single,pool and request 
--------------------------------------------*/
+
 app.use(
 
     connection(mysql,{
@@ -74,6 +73,8 @@ app.post('/vendors/add', vendors.save);//route delete customer
 app.get('/vendors/delete/:vendor_id', vendors.delete_customer);//edit customer route , get n post
 app.get('/vendors/edit/:vendor_id', vendors.edit);
 app.post('/vendors/edit/:vendor_id',vendors.save_edit);
+
+app.get('/q_subquery',q_subquery.list);
 
 app.get('/ratelist', ratelist.list);//route add customer, get n post
 app.get('/ratelist/add', ratelist.add);
