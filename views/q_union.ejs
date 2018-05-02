@@ -1,15 +1,14 @@
 <%- include layouts/header.ejs %>
 
 <div class="page-data">
+    <div class="data-btn">
+        <button>select name from customer union select vendor_name from vendors;</button>
+    </div>
     <div class="data-table">
         <table border="1" cellpadding="7" cellspacing="7">
             <tr>
                 <th width="50px">No</th>
-                <th>Purchase ID</th>
-                <th>Customer Id</th>
-                <th>Product ID</th>
-                <th>Date</th>
-                <th width="120px">Action</th>
+                <th>Name</th>
             </tr>
 
             <% if(data.length){
@@ -18,10 +17,7 @@
 
             <tr>
                 <td><%=(i+1)%></td>
-                <td><%=data[i].purchase_id%></td>
-                <td><%=data[i].id%></td>
-                <td><%=data[i].product_id%></td>
-                <td><%=data[i].purchase_date%></td>
+                <td><%=data[i].name%></td>
                 <!--<td>
                     <a class="a-inside edit" href="../purchases/edit/<%=data[i].purchase_id%>">Edit</a>
 

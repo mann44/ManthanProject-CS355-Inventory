@@ -15,7 +15,15 @@ var purchases = require("./routes/purchases");
 var vendors = require("./routes/vendors");
 var ratelist = require("./routes/ratelist");
 var q_subquery = require("./routes/query");
-
+var q_compares = require("./routes/query");
+var q_derived = require("./routes/query");
+var q_distinct = require("./routes/query");
+var q_exists = require("./routes/query");
+var q_groupby = require("./routes/query");
+var q_innotin = require("./routes/query");
+var q_join = require("./routes/query");
+var q_orderby = require("./routes/query");
+var q_union = require("./routes/query");
 // all environments
 app.set('port', process.env.PORT || 4300);
 app.set('views', path.join(__dirname, 'views'));
@@ -75,6 +83,15 @@ app.get('/vendors/edit/:vendor_id', vendors.edit);
 app.post('/vendors/edit/:vendor_id',vendors.save_edit);
 
 app.get('/q_subquery',q_subquery.list);
+app.get('/q_join',q_join.list2);
+app.get('/q_innotin',q_innotin.list3);
+app.get('/q_exists',q_exists.list4);
+app.get('/q_compares',q_compares.list5);
+app.get('/q_groupby',q_groupby.list6);
+app.get('/q_derived',q_derived.list7);
+app.get('/q_orderby',q_orderby.list8);
+app.get('/q_union',q_union.list9);
+app.get('/q_distinct',q_distinct.list10);
 
 app.get('/ratelist', ratelist.list);//route add customer, get n post
 app.get('/ratelist/add', ratelist.add);

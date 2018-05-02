@@ -39,3 +39,7 @@ function cancelRatelist(){
 
     window.location.href = '/ratelist';
 }
+function gotoHome() {
+    window.location.href = '/views/index';
+
+}

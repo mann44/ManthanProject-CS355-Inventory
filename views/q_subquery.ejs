@@ -1,14 +1,17 @@
 <%- include layouts/header.ejs %>
 
 <div class="page-data">
+    <div class="data-btn">
+        <button>select * from customer where id In ( select id from customer where id > 10);</button>
+    </div>
     <div class="data-table">
         <table border="1" cellpadding="7" cellspacing="7">
             <tr>
                 <th width="50px">No</th>
-                <th>Purchase ID</th>
-                <th>Customer Id</th>
-                <th>Product ID</th>
-                <th>Date</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email</th>
                 <th width="120px">Action</th>
             </tr>
 
@@ -18,16 +21,16 @@
 
             <tr>
                 <td><%=(i+1)%></td>
-                <td><%=data[i].purchase_id%></td>
-                <td><%=data[i].id%></td>
-                <td><%=data[i].product_id%></td>
-                <td><%=data[i].purchase_date%></td>
-                <!--<td>
-                    <a class="a-inside edit" href="../purchases/edit/<%=data[i].purchase_id%>">Edit</a>
+                <td><%=data[i].name%></td>
+                <td><%=data[i].address%></td>
+                <td><%=data[i].phone%></td>
+                <td><%=data[i].email%></td>
+                <td>
+                    <a class="a-inside edit" href="../customers/edit/<%=data[i].id%>">Edit</a>
 
-                    <a class="a-inside delete" href="../purchases/delete/<%=data[i].purchase_id%>">Delete</a>
+                    <a class="a-inside delete" href="../customers/delete/<%=data[i].id%>">Delete</a>
 
-                </td>-->
+                </td>
             </tr>
             <% }
 

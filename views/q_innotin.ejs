@@ -1,14 +1,17 @@
 <%- include layouts/header.ejs %>
 
 <div class="page-data">
+    <div class="data-btn">
+        <button>select * from vendors where vendor_name not in ('Michael', 'Cheeku');</button>
+    </div>
     <div class="data-table">
         <table border="1" cellpadding="7" cellspacing="7">
             <tr>
                 <th width="50px">No</th>
-                <th>Purchase ID</th>
-                <th>Customer Id</th>
-                <th>Product ID</th>
-                <th>Date</th>
+                <th>Vendor Id</th>
+                <th>Vendor's Name</th>
+                <th>Vendor's Address</th>
+                <th>Vendor's Phone</th>
                 <th width="120px">Action</th>
             </tr>
 
@@ -18,22 +21,22 @@
 
             <tr>
                 <td><%=(i+1)%></td>
-                <td><%=data[i].purchase_id%></td>
-                <td><%=data[i].id%></td>
-                <td><%=data[i].product_id%></td>
-                <td><%=data[i].purchase_date%></td>
-                <!--<td>
-                    <a class="a-inside edit" href="../purchases/edit/<%=data[i].purchase_id%>">Edit</a>
+                <td><%=data[i].vendor_id%></td>
+                <td><%=data[i].vendor_name%></td>
+                <td><%=data[i].vendor_address%></td>
+                <td><%=data[i].vendor_phone%></td>
+                <td>
+                    <a class="a-inside edit" href="../vendors/edit/<%=data[i].vendor_id%>">Edit</a>
 
-                    <a class="a-inside delete" href="../purchases/delete/<%=data[i].purchase_id%>">Delete</a>
+                    <a class="a-inside delete" href="../vendors/delete/<%=data[i].vendor_id%>">Delete</a>
 
-                </td>-->
+                </td>
             </tr>
             <% }
 
             }else{ %>
             <tr>
-                <td colspan="3">No user</td>
+                <td colspan="3">No vendors</td>
             </tr>
             <% } %>
 

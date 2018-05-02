@@ -1,14 +1,16 @@
 <%- include layouts/header.ejs %>
 
 <div class="page-data">
+    <div class="data-btn">
+        <button >select * from products where product_rate > All ( select product_rate from products where product_id < 5);</button>
+    </div>
     <div class="data-table">
         <table border="1" cellpadding="7" cellspacing="7">
             <tr>
                 <th width="50px">No</th>
-                <th>Purchase ID</th>
-                <th>Customer Id</th>
-                <th>Product ID</th>
-                <th>Date</th>
+                <th>Product Id</th>
+                <th>Name</th>
+                <th>Rate</th>
                 <th width="120px">Action</th>
             </tr>
 
@@ -18,22 +20,21 @@
 
             <tr>
                 <td><%=(i+1)%></td>
-                <td><%=data[i].purchase_id%></td>
-                <td><%=data[i].id%></td>
                 <td><%=data[i].product_id%></td>
-                <td><%=data[i].purchase_date%></td>
-                <!--<td>
-                    <a class="a-inside edit" href="../purchases/edit/<%=data[i].purchase_id%>">Edit</a>
+                <td><%=data[i].product_name%></td>
+                <td><%=data[i].product_rate%></td>
+                <td>
+                    <a class="a-inside edit" href="../products/edit/<%=data[i].product_id%>">Edit</a>
 
-                    <a class="a-inside delete" href="../purchases/delete/<%=data[i].purchase_id%>">Delete</a>
+                    <a class="a-inside delete" href="../products/delete/<%=data[i].product_id%>">Delete</a>
 
-                </td>-->
+                </td>
             </tr>
             <% }
 
             }else{ %>
             <tr>
-                <td colspan="3">No user</td>
+                <td colspan="3">No Products</td>
             </tr>
             <% } %>
 

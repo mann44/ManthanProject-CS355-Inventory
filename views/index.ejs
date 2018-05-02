@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/1999/html">
+<!--<html>
     <head>
         
         <title><%=(locals.title) ? title :''%></title>
@@ -11,8 +11,84 @@
                 <a href="/products"> Products's Page </a></br>
                 <a href="/purchases"> Purchase's Page </a></br>
                 <a href="/vendors"> Vendor's Page </a></body></br>
-                <a href="/ratelist">Rate list</a>
-                <a href="/q_subquery">Sub Query</a>
+                <a href="/ratelist">Rate list</a></br>
+                <a href="/q_subquery">Sub Query</a></br>
+                <a href="/q_join">JOIN</a></br>
+                <a href="/q_innotin">NOT IN</a></br>
+                <a href="/q_exists">Exists</a></br>
+                <a href="/q_compares">Compare</a></br>
+                <a href="/q_groupby">Group By</a></br>
+                <a href="/q_derived">Derived</a></br>
+                <a href="/q_orderby">Order By</a></br>
+                <a href="/q_union">Union</a></br>
+                <a href="/q_distinct">Distinct</a>
     </body>
+
+</html>-->
+<!-- views/home.ejs -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+
+    <title><%=(locals.title) ? title :''%></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .jumbotron {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="jumbotron">
+        <h2>Welcome to Manthan Gajjar's Database Project</h2>
+
+    </div>
+
+    <div class="row">
+                <h3> Data Tables</h3>
+                <ul class="list-inline">
+                    <li> <a href="/customers"> Customer's Page </a></li>
+                    <li><a href="/products"> Products's Page </a></li>
+                    <li><a href="/purchases"> Purchase's Page </a></li>
+                    <li><a href="/vendors"> Vendor's Page </a></li>
+                    <li><a href="/ratelist">Rate list</a></li>
+                    <li></li>
+                </ul>
+                <ul class="list-inline">
+                    <li><a href="/q_subquery">Sub Query</a></li>
+                    <li> <a href="/q_join">JOIN</a></li>
+                    <li> <a href="/q_innotin">NOT IN</a></li>
+                    <li><a href="/q_exists">Exists</a></li>
+                    <li><a href="/q_compares">Compare</a></li>
+                    <li><a href="/q_groupby">Group By</a></li>
+                    <li><a href="/q_derived">Derived</a></li>
+                    <li><a href="/q_orderby">Order By</a></li>
+                    <li><a href="/q_union">Union</a></li>
+                    <li><a href="/q_distinct">Distinct</a></li>
+                </ul>
+
+
+<div class="jumbotron">
+      <p class="lead">Check out Links below!</p>
+    <a href="https://github.com/mann44/ManthanProject-CS355-Inventory">Github</a></br>
+      <a href="https://sonomastateinternational.wordpress.com/2018/04/17/student-spotlight-manthan-gajjar/">Spotlight</a></br>
+      <a href="https://www.google.com/search?q=manthan+gajjar+ssu&rlz=1C1CHBF_enUS730US730&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjJz7KV2ObaAhVKh1QKHTDkDiwQ_AUICigB&biw=1524&bih=707#imgrc=svEaFyw6K_euKM:">SSU ENGINEERING WebPage</a>
+</div>
+
+
+</div>
+</body>
 
 </html>
